@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Projetos por Unidade</title>
+    <link rel="stylesheet" href="../css/menu.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, textarea, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #4CAF50; /* Substituindo o azul por um verde mais sóbrio */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-btn {
+            background-color: #4CAF50; /* Verde mais suave e profissional */
+            color: white;
+            margin-top: 10px;
+        }
+
+        .add-btn:hover {
+            background-color: #45a049;
+        }
+
+        .submit-btn {
+            background-color: #2196F3; /* Azul mais suave */
+            color: white;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #1976d2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        thead th {
+            background-color: #8e8e8e; /* Cinza neutro */
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+        th{
+            background-color: white;
+        }
+
+        tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .removeBtn {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .removeBtn:hover {
+            background-color: #c82333;
+        }
+
+        .table-actions {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="menu-container"></div><br><br><br>
+
+    <script>
+        // Função para carregar o menu
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-container').innerHTML = data;
+                })
+                .catch(error => console.error('Erro ao carregar o menu:', error));
+        });
+    </script>
+
+    <h1>Lista de Projetos por Unidade</h1>
+    <br><br>
+    <div class="container">
+        <label for="unidadeSelect">Unidade</label>
+        <select id="unidadeSelect">
+            <option value="">Selecione a Unidade</option>
+        </select>
+
+        <button id="searchButton" disabled>Buscar Projetos</button>
+
+        <table id="projetosTable">
+            <thead>
+                <tr>
+                    <th>Nome do Projeto</th>
+                    <th>Descrição</th>
+                    <th>Nome da Fase</th>
+                    <th>Descrição da Fase</th>
+                    <th>Prazo</th>
+                    <th>Status</th>
+                    <th>Comentário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Projetos e fases serão inseridos aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/unidade_projetos.js"></script>
+</body>
+</html>

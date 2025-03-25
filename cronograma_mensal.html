@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Projetos Especiais</title>
+    <link rel="stylesheet" href="../css/cronograma_mensal.css">
+    <link rel="stylesheet" href="../css/menu.css">
+  
+</head>
+<body>
+    <div id="menu-container"></div><br><br><br>
+
+<script>
+    // Função para carregar o menu
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o menu:', error));
+    });
+</script>
+    <header>
+        <h1>Cronograma de Projetos Especiais</h1>
+    </header>
+    <div class="container">
+    <main>
+        <section class="filter-section">
+            <label for="unidadeSelect">Selecione a Unidade:</label>
+            <select id="unidadeSelect">
+                <option value="">Selecione</option>
+            </select>
+            <!-- Filtro de Ano -->
+
+            <label for="projetoSelect">Selecione o Projeto:</label>
+            <select id="projetoSelect">
+                <option value="">Selecione</option>
+            </select>
+            <!-- Filtro de Ano -->
+
+<label for="anoSelect">Ano:</label>
+<select id="anoSelect">
+    <option value="2024">2024</option>
+    <option value="2025" selected>2025</option>
+    <option value="2026">2026</option>
+</select>
+
+            <button id="searchButton" disabled>Buscar</button>
+        </section>
+        <section class="table-section">
+            <table id="cronogramaTable">
+                <thead>
+                    <tr>
+                        <th>Projeto Especial</th>
+                        <th>Fase</th>
+                        <!-- Colunas de meses serão adicionadas dinamicamente -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Conteúdo dinâmico -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+    <script src="../js/cronograma_mensal.js"></script>
+</body>
+</html>
+

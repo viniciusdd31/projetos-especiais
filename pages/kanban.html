@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban de Projetos</title>
+    <link rel="stylesheet" href="../css/kanban.css">
+    <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+    <div id="menu-container"></div><br><br><br><br>
+
+    <script>
+        // Função para carregar o menu
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-container').innerHTML = data;
+                })
+                .catch(error => console.error('Erro ao carregar o menu:', error));
+        });
+    </script>
+    <header>
+        <h1>Kanban de Projetos Especiais</h1>
+        <div class="filters">
+            <select id="unidadeSelect">
+                <option value="">Selecione a Unidade</option>
+            </select>
+            <select id="projetoSelect" disabled>
+                <option value="">Selecione o Projeto</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <div class="kanban">
+            <div class="kanban-column" data-status="Iniciar">
+                <h2>Pendente</h2>
+                <div id="pendente" class="kanban-cards" id="pendente"></div>
+            </div>
+            <div class="kanban-column" data-status="Em Andamento">
+                <h2>Em Progresso</h2>
+                <div id="em-progresso" class="kanban-cards" id="em-progresso"></div>
+            </div>
+            <div class="kanban-column" data-status="Concluído">
+                <h2>Concluído</h2>
+                <div id="concluido" class="kanban-cards" id="concluido"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../js/kanban.js"></script>
+</body>
+</html>
